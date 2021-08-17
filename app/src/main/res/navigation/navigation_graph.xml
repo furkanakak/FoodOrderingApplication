@@ -10,8 +10,8 @@
         android:label="OnBoardingFragment"
         tools:layout="@layout/fragment_onboarding">
         <action
-            android:id="@+id/action_onBoardingFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_onBoardingFragment_to_loginAndSignupFragment"
+            app:destination="@id/loginAndSignupFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -23,8 +23,8 @@
             app:destination="@id/onBoardingFragment" />
     </fragment>
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.foodorderingapplication.ui.login.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        android:id="@+id/loginAndSignupFragment"
+        android:name="com.example.foodorderingapplication.ui.login.LoginAndSignupFragment"
+        android:label="LoginAndSignupFragment"
+        tools:layout="@layout/fragment_login_and_signup"/>
 </navigation>

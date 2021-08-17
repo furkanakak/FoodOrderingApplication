@@ -62,7 +62,7 @@ class OnBoardingFragment : Fragment()  {
                         binding?.onBoardingPreviousButton?.visibility = View.VISIBLE
                         binding?.onBoardingNextButton?.text = resources.getText(R.string.finish)
                         binding?.onBoardingNextButton?.setOnClickListener {
-                            findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment)
+                            findNavController().navigate(R.id.action_onBoardingFragment_to_loginAndSignupFragment)
                         }
                         binding?.onBoardingPreviousButton?.setOnClickListener {
                             binding?.onBoardingViewPager?.currentItem = binding!!.onBoardingViewPager.currentItem - 1
