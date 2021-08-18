@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
     <ScrollView
@@ -127,8 +127,10 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RestaurantRecyclerView"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="30dp"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -137,154 +139,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/RestaurantListingRestaurant" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="@+id/RestaurantListingScrollView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="parent">
 
-                <com.google.android.material.bottomappbar.BottomAppBar
-                    android:id="@+id/RestaurantListingAppBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:backgroundTint="#f6f6f6"
-                    app:fabCradleMargin="8dp"
-                    app:fabCradleRoundedCornerRadius="50dp"
-                    app:fabCradleVerticalOffset="6dp">
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:id="@+id/homebtn"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.2"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_home" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Home"
-                                android:textAlignment="center"
-                                android:textColor="#676767"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/profilebtn"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.2"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_profile" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Profile"
-                                android:textAlignment="center"
-                                android:textColor="#676767"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/line3"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.2"
-                            android:orientation="vertical"
-                            android:visibility="invisible">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_profile" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Home"
-                                android:textAlignment="center"
-                                android:textColor="#676767"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/orderbtn"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.2"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_lastorder" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Order"
-                                android:textAlignment="center"
-                                android:textColor="#676767"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/settingbtn"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.2"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_settings" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Setting"
-                                android:textAlignment="center"
-                                android:textColor="#676767"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                </com.google.android.material.bottomappbar.BottomAppBar>
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/RestaurantListingFloatingActionButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#ff5e00"
-                    android:elevation="3dp"
-                    android:src="@drawable/ic_baseline_add_shopping_cart_24"
-                    app:maxImageSize="30dp"
-                    android:tint="#FFFFFF"
-                    app:layout_anchor="@+id/RestaurantListingAppBar"
-                    />
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
         </LinearLayout>

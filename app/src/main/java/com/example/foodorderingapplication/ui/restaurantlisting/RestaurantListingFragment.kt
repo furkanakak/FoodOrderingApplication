@@ -13,12 +13,15 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentRestaurantListingBinding
 import com.example.foodorderingapplication.model.entity.category.Category
+import com.example.foodorderingapplication.model.entity.meal.Meal
+import com.example.foodorderingapplication.model.entity.restaurant.Restaurant
 import kotlin.math.abs
 
 class RestaurantListingFragment : Fragment() {
     private lateinit var binding: FragmentRestaurantListingBinding
     private lateinit var sliderAdapter : RestaurantListingSliderAdapter
     private lateinit var categoryAdapter : CategoryAdapter
+    private lateinit var restaurantListAdapter : RestaurantListAdapter
 
     private val sliderHandler = Handler()
     override fun onCreateView(
@@ -34,11 +37,34 @@ class RestaurantListingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initSlider()
         setCuisineList()
+        setRestaurantList()
+    }
+
+    private fun setRestaurantList() {
+        var linearLayoutManager : LinearLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.RestaurantRecyclerView.layoutManager = linearLayoutManager
+        var restaurantList : ArrayList<Restaurant> = ArrayList()
+        var mealList : ArrayList<Meal> = ArrayList()
+        restaurantList.add(
+            Restaurant("1","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
+        "BurgerKing","credit card","0000","","burger")
+        )
+        restaurantList.add(
+            Restaurant("1","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
+                "McDonald's ","credit card","0000","","burger")
+        )
+        restaurantList.add(
+            Restaurant("1","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
+                "Domino's","credit card","0000","","burger")
+        )
+        restaurantListAdapter = RestaurantListAdapter(requireContext())
+        restaurantListAdapter.setRestaurantList(restaurantList)
+        binding.RestaurantRecyclerView.adapter=restaurantListAdapter
     }
 
     private fun setCuisineList() {
         var linearLayoutManager : LinearLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-        binding.categoriesRecyclerView.layoutManager=linearLayoutManager
+        binding.categoriesRecyclerView.layoutManager = linearLayoutManager
         var categoryList : ArrayList<Category> = ArrayList()
 
         categoryList.add(Category("pizza",R.drawable.pizza_icon))
@@ -49,7 +75,6 @@ class RestaurantListingFragment : Fragment() {
         categoryAdapter = CategoryAdapter(requireContext())
         categoryAdapter.setContentList(categoryList)
         binding.categoriesRecyclerView.adapter=categoryAdapter
-
 
     }
 
