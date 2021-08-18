@@ -72,7 +72,6 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
                     android:layout_width="350dp"
-
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     app:cardCornerRadius="15dp"
@@ -99,14 +98,14 @@
                     android:text="Categories"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+                    app:layout_constraintBottom_toTopOf="@+id/categoriesRecyclerView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/RestaurantListingSliderIndicator" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="409dp"
-                    android:layout_height="223dp"
+                    android:id="@+id/categoriesRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
@@ -115,9 +114,28 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/RestaurantListingCategories" />
 
+                <TextView
+                    android:id="@+id/RestaurantListingRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Restaurants"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/categoriesRecyclerView" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RestaurantRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/RestaurantListingRestaurant" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
@@ -268,8 +286,8 @@
                     />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        </LinearLayout>
 
+        </LinearLayout>
 
     </ScrollView>
 

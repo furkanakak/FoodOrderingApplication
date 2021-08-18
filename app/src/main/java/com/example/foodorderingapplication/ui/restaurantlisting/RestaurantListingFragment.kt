@@ -6,16 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentRestaurantListingBinding
+import com.example.foodorderingapplication.model.entity.category.Category
 import kotlin.math.abs
 
 class RestaurantListingFragment : Fragment() {
     private lateinit var binding: FragmentRestaurantListingBinding
     private lateinit var sliderAdapter : RestaurantListingSliderAdapter
+    private lateinit var categoryAdapter : CategoryAdapter
+
     private val sliderHandler = Handler()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +37,19 @@ class RestaurantListingFragment : Fragment() {
     }
 
     private fun setCuisineList() {
+        var linearLayoutManager : LinearLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.categoriesRecyclerView.layoutManager=linearLayoutManager
+        var categoryList : ArrayList<Category> = ArrayList()
+
+        categoryList.add(Category("pizza",R.drawable.pizza_icon))
+        categoryList.add(Category("Burger",R.drawable.burger_icon))
+        categoryList.add(Category("Hatdog",R.drawable.hotdog_icon))
+        categoryList.add(Category("Fish",R.drawable.fish_icon))
+        categoryList.add(Category("Drink",R.drawable.drink_icon))
+        categoryAdapter = CategoryAdapter(requireContext())
+        categoryAdapter.setContentList(categoryList)
+        binding.categoriesRecyclerView.adapter=categoryAdapter
+
 
     }
 
