@@ -44,7 +44,7 @@
         android:backgroundTint="#ff5e00"
         android:elevation="3dp"
         android:src="@drawable/ic_baseline_add_shopping_cart_24"
-        android:tint="#FFFFFF"
+        app:tint="#FFFFFF"
         app:layout_anchor="@+id/bottomAppBar"
         app:maxImageSize="25dp"
         />

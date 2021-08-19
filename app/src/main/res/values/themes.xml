@@ -11,8 +11,17 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+    <!-- Toolbar close.-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
+
+    <!-- TimePickerDialog style -->
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/purple_200</item>
+        <item name="colorOnPrimary">#7BC2E9</item>
+    </style>
+
 </resources>

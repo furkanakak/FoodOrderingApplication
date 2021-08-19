@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="Back Button"
+        android:padding="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/restaurantImageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:contentDescription="Restaurant Image"
+        android:scaleType="centerCrop"
+        android:paddingVertical="16dp"
+        android:src="@mipmap/oops_404_foreground"
+        android:background="@null"
+        app:shapeAppearanceOverlay="@style/CircularImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
+
+    <TextView
+        android:id="@+id/restaurantDetailRestaurantName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:layout_marginVertical="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/restaurantImageView"
+        tools:text="Restaurant name" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/restaurantDetailTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantDetailRestaurantName"
+        app:tabIndicatorColor="#FA4A0C"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="#FA4A0C">
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/restaurantDetailViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingVertical="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/restaurantDetailTabLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/restaurantDetailProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/restaurantDetailFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#6A6664"
+        android:elevation="3dp"
+        android:src="@drawable/ic_add"
+        android:padding="16dp"
+        app:tint="#FFFFFF"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxImageSize="25dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

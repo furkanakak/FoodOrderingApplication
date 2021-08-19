@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/addRestaurantTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/restaurant_title"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/addRestaurantImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:src="@mipmap/ic_add_restaurant_foreground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addRestaurantTitle"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurantNameEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/restaurant_name"
+                app:boxBackgroundColor="@color/gray_light"
+                app:expandedHintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addRestaurantImageView"
+                app:layout_constraintWidth_percent="0.9"
+                app:startIconDrawable="@drawable/ic_icon_restaurant_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurantPhoneEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/restaurant_phone"
+                app:boxBackgroundColor="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantNameEditText"
+                app:layout_constraintWidth_percent="0.9"
+                app:startIconDrawable="@drawable/ic_icon_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurantWebsiteEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/restaurant_website"
+                app:boxBackgroundColor="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantPhoneEditText"
+                app:layout_constraintWidth_percent="0.9"
+                app:startIconDrawable="@drawable/ic_icon_website">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textWebEditText"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/restaurantOpenHoursLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:weightSum="2"
+                app:boxBackgroundColor="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantWebsiteEditText"
+                app:layout_constraintWidth_percent="0.9">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/restaurantOpenHourLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/restaurant_open_hour"
+                    app:boxBackgroundColor="@color/gray_light"
+                    app:startIconDrawable="@drawable/ic_icon_clock">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/restaurantOpenHourEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="false"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/restaurantCloseHourLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/restaurant_close_hour"
+                    app:boxBackgroundColor="@color/gray_light"
+                    app:startIconDrawable="@drawable/ic_icon_clock">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/restaurantCloseHourEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="false"
+                        android:inputType="textWebEditText"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurantAddressEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/restaurant_address"
+                app:boxBackgroundColor="@color/gray_light"
+                app:counterEnabled="true"
+                app:counterMaxLength="200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantOpenHoursLayout"
+                app:layout_constraintWidth_percent="0.9"
+                app:startIconDrawable="@drawable/ic_icon_location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/restaurantCityLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:weightSum="5"
+                app:boxBackgroundColor="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantAddressEditText"
+                app:layout_constraintWidth_percent="0.9">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/restaurantCityTextLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="@string/restaurant_city"
+                    app:boxBackgroundColor="@color/gray_light">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/restaurantCityEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="false"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/citySpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/restaurantAddressEditText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/restaurantCuisineLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:weightSum="10"
+                app:boxBackgroundColor="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantCityLayout"
+                app:layout_constraintWidth_percent="0.9">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/restaurantCuisineTextLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:hint="@string/restaurant_cuisine"
+                    app:boxBackgroundColor="@color/gray_light">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/restaurantCuisineEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="false"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/cuisineSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/restaurantAddressEditText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/restaurantDeliveryLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:baselineAligned="false"
+                android:weightSum="2"
+                app:boxBackgroundColor="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantCuisineLayout"
+                app:layout_constraintWidth_percent="0.9">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/restaurantDeliveryTimeLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/restaurant__min_delivery_time"
+                    android:paddingEnd="5dp"
+                    app:boxBackgroundColor="@color/gray_light"
+                    app:startIconDrawable="@drawable/ic_icon_min_clock">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/restaurantDeliveryTimeEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/restaurantDeliveryFeeLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/restaurant_delivery_fee"
+                    android:paddingStart="5dp"
+                    app:boxBackgroundColor="@color/gray_light"
+                    app:startIconDrawable="@drawable/ic_icon_min_clock">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/restaurantDeliveryFeeEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurantDeliveryInfoEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/restaurant_delivery_info"
+                app:boxBackgroundColor="@color/gray_light"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantDeliveryLayout"
+                app:layout_constraintWidth_percent="0.9"
+                app:startIconDrawable="@drawable/ic_icon_info">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textWebEditText"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurantPaymentMethodsLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/select_payment_methods"
+                app:boxBackgroundColor="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantDeliveryInfoEditText"
+                app:layout_constraintWidth_percent="0.9">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textWebEditText"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/errorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantPaymentMethodsLayout"/>
+
+            <Space
+                android:id="@+id/space"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                app:layout_constraintTop_toBottomOf="@id/errorTextView" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addRestaurantButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/button_bg"
+                android:text="@string/add_restaurant"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/space"
+                app:layout_constraintWidth_percent="0.75" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_constraintTop_toBottomOf="@+id/addRestaurantButton"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

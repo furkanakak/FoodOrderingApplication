@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -38,6 +40,27 @@ class RestaurantListingFragment : Fragment() {
         initSlider()
         setCuisineList()
         setRestaurantList()
+        addListener()
+
+    }
+
+    private fun addListener() {
+        restaurantListAdapter.addListener(object : IRestaurantOnClick{
+            override fun onClick(restaurant: Restaurant) {
+                val action =
+                    RestaurantListingFragmentDirections.actionRestaurantListingFragmentToRestaurantDetailFragment(
+                        restaurant.id
+                    )
+                findNavController().navigate(action)
+
+            }
+
+        })
+
+        binding.restaurantDetailListingFloatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_restaurantListingFragment_to_restaurantAddFragment)
+        }
+
     }
 
     private fun setRestaurantList() {
@@ -50,11 +73,11 @@ class RestaurantListingFragment : Fragment() {
         "BurgerKing","credit card","0000","","burger")
         )
         restaurantList.add(
-            Restaurant("1","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
+            Restaurant("2","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
                 "McDonald's ","credit card","0000","","burger")
         )
         restaurantList.add(
-            Restaurant("1","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
+            Restaurant("3","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
                 "Domino's","credit card","0000","","burger")
         )
         restaurantListAdapter = RestaurantListAdapter(requireContext())

@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation_graph"
     app:startDestination="@id/restaurantListingFragment">
 
     <fragment
         android:id="@+id/restaurantListingFragment"
         android:name="com.example.foodorderingapplication.ui.restaurantlisting.RestaurantListingFragment"
-        android:label="RestaurantListingFragment" />
+        android:label="RestaurantListingFragment"
+        tools:layout="@layout/fragment_restaurant_listing">
+        <action
+            android:id="@+id/action_restaurantListingFragment_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
+        <action
+            android:id="@+id/action_restaurantListingFragment_to_restaurantAddFragment"
+            app:destination="@id/restaurantAddFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.foodorderingapplication.ui.setting.SettingFragment"
-        android:label="SettingFragment" />
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_settings"/>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.foodorderingapplication.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/orderFragment"
         android:name="com.example.foodorderingapplication.ui.order.OrderFragment"
-        android:label="OrderFragment" />
+        android:label="OrderFragment"
+        tools:layout="@layout/fragment_order"/>
+    <fragment
+        android:id="@+id/restaurantDetailFragment"
+        android:name="com.example.foodorderingapplication.ui.restaurantdetail.RestaurantDetailFragment"
+        android:label="RestaurantDetailFragment"
+        tools:layout="@layout/fragment_restaurant_detail">
+        <argument
+            android:name="restaurantId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantAddFragment"
+        android:name="com.example.foodorderingapplication.ui.restaurantadd.RestaurantAddFragment"
+        android:label="RestaurantAddFragment"
+        tools:layout="@layout/fragment_restaurant_add">
+        <action
+            android:id="@+id/action_restaurantAddFragment_to_restaurantListingFragment"
+            app:destination="@id/restaurantListingFragment" />
+    </fragment>
 </navigation>

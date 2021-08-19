@@ -5,6 +5,42 @@
     <string name="finish">Finish</string>
 
 
+
+    <!--Add restaurant screen strings -->
+    <string name="restaurant_title">Restaurant</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="restaurant_address">Address</string>
+    <string name="restaurant_phone">Phone</string>
+    <string name="restaurant_website">Website</string>
+    <string name="add_restaurant">Add Restaurant</string>
+    <string name="restaurant_open_hour">Open</string>
+    <string name="restaurant_close_hour">Close</string>
+    <string name="restaurant__min_delivery_time">Min</string>
+    <string name="restaurant_delivery_fee">Fee</string>
+    <string name="restaurant_city">City :</string>
+    <string name="select_payment_methods">Select Payment Methods</string>
+    <string name="restaurant_cuisine">Cuisine</string>
+    <string name="restaurant_open_hour_error">Please select open hour</string>
+    <string name="restaurant_close_hour_error">Please select close hour</string>
+    <string name="restaurant_payment_methods_error">Please select payment methods</string>
+
+
+    <!--Add food screen strings -->
+    <string name="food_title">Food</string>
+    <string name="food_name">Food name</string>
+    <string name="add_food">Add Food</string>
+    <string name="food_price">Price</string>
+    <string name="food_ingredients">Ingredients</string>
+    <string name="delivery_info">Delivery Info</string>
+    <string name="delivery_time">Delivery Time</string>
+    <string name="minimum_delivery_fee">Minimum Delivery Fee</string>
+    <string name="payment">Payment</string>
+    <string name="order_now_button">Order Now</string>
+    <string name="food_description">Description</string>
+    <string name="restaurant_delivery_info">Delivery Info</string>
+    <string name="ingredients_error">Please add ingredients</string>
+
+
     <string-array name="Cuisines">
         <item>Seafood</item>
         <item>Burger</item>
@@ -21,5 +57,90 @@
         <item>Eastern Kitchen</item>
     </string-array>
 
+
+    <!--City strings -->
+    <string-array name="Cities">
+        <item>Adana</item>
+        <item>Adıyaman</item>
+        <item>Afyon</item>
+        <item>Ağrı</item>
+        <item>Amasya</item>
+        <item>Ankara</item>
+        <item>Antalya</item>
+        <item>Artvin</item>
+        <item>Aydın</item>
+        <item>Balıkesir</item>
+        <item>Bilecik</item>
+        <item>Bingöl</item>
+        <item>Bitlis</item>
+        <item>Bolu</item>
+        <item>Burdur</item>
+        <item>Bursa</item>
+        <item>Çanakkale</item>
+        <item>Çankırı</item>
+        <item>Çorum</item>
+        <item>Denizli</item>
+        <item>Diyarbakır</item>
+        <item>Edirne</item>
+        <item>Elazığ</item>
+        <item>Erzincan</item>
+        <item>Erzurum</item>
+        <item>Eskişehir</item>
+        <item>Gaziantep</item>
+        <item>Giresun</item>
+        <item>Gümüşhane</item>
+        <item>Hakkari</item>
+        <item>Hatay</item>
+        <item>Isparta</item>
+        <item>İçel</item>
+        <item>İstanbul</item>
+        <item>İzmir</item>
+        <item>Kars</item>
+        <item>Kastamonu</item>
+        <item>Kayseri</item>
+        <item>Kırklareli</item>
+        <item>Kırşehir</item>
+        <item>Kocaeli</item>
+        <item>Konya</item>
+        <item>Kütahya</item>
+        <item>Malatya</item>
+        <item>Manisa</item>
+        <item>Kahramanmaraş</item>
+        <item>Mardin</item>
+        <item>Muğla</item>
+        <item>Muş</item>
+        <item>Nevşehir</item>
+        <item>Niğde</item>
+        <item>Ordu</item>
+        <item>Rize</item>
+        <item>Sakarya</item>
+        <item>Samsun</item>
+        <item>Siirt</item>
+        <item>Sinop</item>
+        <item>Sivas</item>
+        <item>Tekirdağ</item>
+        <item>Tokat</item>
+        <item>Trabzon</item>
+        <item>Tunceli</item>
+        <item>Şanlıurfa</item>
+        <item>Uşak</item>
+        <item>Van</item>
+        <item>Yozgat</item>
+        <item>Zonguldak</item>
+        <item>Aksaray</item>
+        <item>Bayburt</item>
+        <item>Karaman</item>
+        <item>Kırıkkale</item>
+        <item>Batman</item>
+        <item>Şırnak</item>
+        <item>Bartın</item>
+        <item>Ardahan</item>
+        <item>Iğdır</item>
+        <item>Yalova</item>
+        <item>Karabük</item>
+        <item>Kilis</item>
+        <item>Osmaniye</item>
+        <item>Düzce</item>
+    </string-array>
 
 </resources>
