@@ -40,6 +40,9 @@
         <argument
             android:name="restaurantId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_mealAddFragment"
+            app:destination="@id/mealAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantAddFragment"
@@ -49,5 +52,14 @@
         <action
             android:id="@+id/action_restaurantAddFragment_to_restaurantListingFragment"
             app:destination="@id/restaurantListingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealAddFragment"
+        android:name="com.example.foodorderingapplication.ui.mealadd.MealAddFragment"
+        android:label="MealAddFragment"
+        tools:layout="@layout/fragment_meal_add">
+        <argument
+            android:name="restaurantId"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentRestaurantDetailBinding
 import com.example.foodorderingapplication.model.entity.meal.Meal
 import com.example.foodorderingapplication.model.entity.restaurant.Restaurant
@@ -28,6 +29,13 @@ class RestaurantDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViewPager()
+        addListeners()
+    }
+
+    private fun addListeners() {
+        binding.restaurantDetailFloatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_restaurantDetailFragment_to_mealAddFragment)
+        }
     }
 
     private fun initViewPager() {

@@ -41,6 +41,7 @@
     <string name="ingredients_error">Please add ingredients</string>
 
 
+
     <string-array name="Cuisines">
         <item>Seafood</item>
         <item>Burger</item>
