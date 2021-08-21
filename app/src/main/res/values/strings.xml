@@ -5,6 +5,11 @@
     <string name="finish">Finish</string>
 
 
+    <!--Restaurant listing screen strings -->
+    <string name="restaurant_listing_title">Delicious\nfood for you</string>
+    <string name="search_view_text">Search in All</string>
+    <string name="all_restaurants">All</string>
+
 
     <!--Add restaurant screen strings -->
     <string name="restaurant_title">Restaurant</string>
@@ -39,7 +44,7 @@
     <string name="food_description">Description</string>
     <string name="restaurant_delivery_info">Delivery Info</string>
     <string name="ingredients_error">Please add ingredients</string>
-
+    <string name="response_not_found">Ups!… No results found</string>
 
 
     <string-array name="Cuisines">

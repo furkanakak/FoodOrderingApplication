@@ -12,16 +12,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.model.entity.category.Category
+import com.example.foodorderingapplication.model.entity.restaurant.Restaurant
 
 
 class CategoryAdapter(val context : Context) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(){
-
+    private var listener: IItemOnClick? = null
     lateinit var list : List<Category>
 
     class CategoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         var categoryPic = itemView.findViewById<ImageView>(R.id.categoryItemImageView)
         var categoryName = itemView.findViewById<TextView>(R.id.categoryItemTextView)
         var layout = itemView.findViewById<ConstraintLayout>(R.id.categoryItemLayout)
+        fun bind(category: Category, listener: IItemOnClick?) {
+            layout.setOnClickListener {
+                listener?.onClick(category)
+            }
+        }
     }
 
 
@@ -29,6 +35,9 @@ class CategoryAdapter(val context : Context) : RecyclerView.Adapter<CategoryAdap
     {
         this.list = list
         notifyDataSetChanged()
+    }
+    fun addListener(listener: IItemOnClick?) {
+        this.listener = listener
     }
 
 
@@ -44,35 +53,36 @@ class CategoryAdapter(val context : Context) : RecyclerView.Adapter<CategoryAdap
         when(position)
         {
             0 ->{
-                picUrl ="cat_1"
                 holder.layout.setBackgroundResource(R.drawable.category_background)
 
             }
             1 ->{
-                picUrl ="cat_2"
                 holder.layout.setBackgroundResource(R.drawable.category_background2)
 
             }
             2->{
-                picUrl ="cat_3"
                 holder.layout.setBackgroundResource(R.drawable.category_background3)
 
             }
             3 ->{
-                picUrl ="cat_4"
                 holder.layout.setBackgroundResource(R.drawable.category_background4)
 
             }
             4 ->{
-                picUrl ="cat_5"
                 holder.layout.setBackgroundResource(R.drawable.category_background5)
+
+            }
+            5 ->{
+                holder.layout.setBackgroundResource(R.drawable.category_background)
 
             }
         }
 
         holder.categoryPic.setImageResource(list[position].pic)
-
+        val item = list[position]
+        holder.bind(item, listener)
     }
+
 
     override fun getItemCount(): Int = list.size
 

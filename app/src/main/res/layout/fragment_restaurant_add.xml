@@ -358,6 +358,7 @@
                 app:layout_constraintWidth_percent="0.9">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/restaurantPaymentMethodsEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textWebEditText"

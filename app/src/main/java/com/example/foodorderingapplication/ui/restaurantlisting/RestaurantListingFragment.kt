@@ -1,11 +1,16 @@
 package com.example.foodorderingapplication.ui.restaurantlisting
 
+
+
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,13 +22,19 @@ import com.example.foodorderingapplication.databinding.FragmentRestaurantListing
 import com.example.foodorderingapplication.model.entity.category.Category
 import com.example.foodorderingapplication.model.entity.meal.Meal
 import com.example.foodorderingapplication.model.entity.restaurant.Restaurant
+import com.example.foodorderingapplication.utils.Resource
+import com.example.foodorderingapplication.utils.gone
+import com.example.foodorderingapplication.utils.show
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
 
+@AndroidEntryPoint
 class RestaurantListingFragment : Fragment() {
     private lateinit var binding: FragmentRestaurantListingBinding
+    private val viewModel: RestaurantListingViewModel by viewModels()
     private lateinit var sliderAdapter : RestaurantListingSliderAdapter
     private lateinit var categoryAdapter : CategoryAdapter
-    private lateinit var restaurantListAdapter : RestaurantListAdapter
+    private var restaurantListAdapter = RestaurantListAdapter()
 
     private val sliderHandler = Handler()
     override fun onCreateView(
@@ -37,22 +48,27 @@ class RestaurantListingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getRestaurants()
         initSlider()
         setCuisineList()
-        setRestaurantList()
         addListener()
+
 
     }
 
     private fun addListener() {
-        restaurantListAdapter.addListener(object : IRestaurantOnClick{
-            override fun onClick(restaurant: Restaurant) {
-                val action =
-                    RestaurantListingFragmentDirections.actionRestaurantListingFragmentToRestaurantDetailFragment(
-                        restaurant.id
-                    )
-                findNavController().navigate(action)
 
+        binding.RestaurantListingSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val filterList = viewModel.searchTextOnRestaurantList(query)
+                setRestaurantList(filterList)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val filterList = viewModel.searchTextOnRestaurantList(newText)
+                setRestaurantList(filterList)
+                return true
             }
 
         })
@@ -61,44 +77,35 @@ class RestaurantListingFragment : Fragment() {
             findNavController().navigate(R.id.action_restaurantListingFragment_to_restaurantAddFragment)
         }
 
+
+
     }
 
-    private fun setRestaurantList() {
-        var linearLayoutManager : LinearLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+    private fun setRestaurantList(restaurantList: List<Restaurant>?) {
+        isRestaurantListVisible(restaurantList.isNullOrEmpty().not())
+        var linearLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         binding.RestaurantRecyclerView.layoutManager = linearLayoutManager
-        var restaurantList : ArrayList<Restaurant> = ArrayList()
-        var mealList : ArrayList<Meal> = ArrayList()
-        restaurantList.add(
-            Restaurant("1","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
-        "BurgerKing","credit card","0000","","burger")
-        )
-        restaurantList.add(
-            Restaurant("2","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
-                "McDonald's ","credit card","0000","","burger")
-        )
-        restaurantList.add(
-            Restaurant("3","fast","30-40","https://s3-eu-central-1.amazonaws.com/next-level-web/images/store_primary_image/E1WnAhM8Cx-main.jpeg","-","Ankara",mealList,"40",
-                "Domino's","credit card","0000","","burger")
-        )
-        restaurantListAdapter = RestaurantListAdapter(requireContext())
-        restaurantListAdapter.setRestaurantList(restaurantList)
+        restaurantListAdapter = RestaurantListAdapter()
+         restaurantListAdapter.setRestaurantList(restaurantList)
         binding.RestaurantRecyclerView.adapter=restaurantListAdapter
+        restaurantListAdapter.fragment(requireParentFragment())
     }
 
     private fun setCuisineList() {
         var linearLayoutManager : LinearLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         binding.categoriesRecyclerView.layoutManager = linearLayoutManager
         var categoryList : ArrayList<Category> = ArrayList()
-
-        categoryList.add(Category("pizza",R.drawable.pizza_icon))
+        categoryList.add(Category("All",R.drawable.all_iconn))
+        categoryList.add(Category("Pizza",R.drawable.pizza_icon))
         categoryList.add(Category("Burger",R.drawable.burger_icon))
         categoryList.add(Category("Hatdog",R.drawable.hotdog_icon))
         categoryList.add(Category("Fish",R.drawable.fish_icon))
         categoryList.add(Category("Drink",R.drawable.drink_icon))
+
         categoryAdapter = CategoryAdapter(requireContext())
         categoryAdapter.setContentList(categoryList)
         binding.categoriesRecyclerView.adapter=categoryAdapter
-
+        addCuisineTypesListener()
     }
 
     private fun initSlider() {
@@ -130,5 +137,54 @@ class RestaurantListingFragment : Fragment() {
     private val sliderRunneble = Runnable {
         binding.RestaurantListingViewPager .currentItem = binding.RestaurantListingViewPager.currentItem + 1
     }
+
+    private fun isRestaurantListVisible(isVisible: Boolean) {
+        binding.progressBar.gone()
+        binding.RestaurantRecyclerView.isVisible = isVisible
+        binding.responseErrorLinearLayout.isVisible = isVisible.not()
     }
+
+    private fun addCuisineTypesListener() {
+        categoryAdapter.addListener(object : IItemOnClick{
+            override fun onClick(category: Category) {
+                binding.RestaurantListingSearchView.queryHint = "Search in ${category.title}"
+                binding.RestaurantListingSearchView.onActionViewCollapsed()
+                if (category.title == getString(R.string.all_restaurants))
+                    getRestaurants()
+                else
+                    sendCuisineRequest(category.title)
+            }})}
+
+    private fun getRestaurants() {
+        viewModel.getRestaurants().observe(viewLifecycleOwner, { response ->
+            when (response.status) {
+                Resource.Status.LOADING -> binding.progressBar.show()
+                Resource.Status.SUCCESS -> {
+                    viewModel.restaurantList = response.data?.restaurantList
+                    setRestaurantList(viewModel.restaurantList)
+                }
+                Resource.Status.ERROR -> isRestaurantListVisible(false)
+            }})
+
+    }
+
+    private fun sendCuisineRequest(cuisineName: String) {
+        viewModel.getRestaurantByCuisine(cuisineName).observe(viewLifecycleOwner, { response ->
+            when (response.status) {
+                Resource.Status.LOADING -> binding.progressBar.show()
+                Resource.Status.SUCCESS -> {
+                    viewModel.restaurantList = response.data?.restaurantList
+                    setRestaurantList(response.data?.restaurantList)
+                }
+                Resource.Status.ERROR -> isRestaurantListVisible(false)
+            }
+        })
+    }
+
+
+
+
+
+
+}
 
