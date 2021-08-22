@@ -120,7 +120,7 @@ class NetworkModule {
 
     @Provides
     fun provideEndPoint(): EndPoint {
-        return EndPoint("https://dist-learn.herokuapp.com/api/")
+        return EndPoint("https://food-delivery-app-furkan.herokuapp.com/api/")
     }
 
     private fun provideAuthOkHttpClient(okHttpClient: OkHttpClient): AuthOkHttpClient {

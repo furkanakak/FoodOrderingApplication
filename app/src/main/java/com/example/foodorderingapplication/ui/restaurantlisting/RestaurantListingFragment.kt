@@ -136,6 +136,17 @@ class RestaurantListingFragment : Fragment() {
     }
     private val sliderRunneble = Runnable {
         binding.RestaurantListingViewPager .currentItem = binding.RestaurantListingViewPager.currentItem + 1
+        if(binding.RestaurantListingViewPager.currentItem == 2)
+        {
+            Handler().postDelayed(
+                {
+                    // This method will be executed once the timer is over
+                    binding.RestaurantListingViewPager.currentItem = -2
+                },
+                2000
+            )
+
+        }
     }
 
     private fun isRestaurantListVisible(isVisible: Boolean) {
