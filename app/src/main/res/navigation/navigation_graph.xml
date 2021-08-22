@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_splashFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_loginAndSignupFragment"
+            app:destination="@id/loginAndSignupFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginAndSignupFragment"

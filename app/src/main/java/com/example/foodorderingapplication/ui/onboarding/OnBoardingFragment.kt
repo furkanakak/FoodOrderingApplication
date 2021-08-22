@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentOnboardingBinding
+import com.example.foodorderingapplication.model.local.SharedPrefManager
 
 class OnBoardingFragment : Fragment()  {
     private var binding: FragmentOnboardingBinding? = null
@@ -62,6 +63,7 @@ class OnBoardingFragment : Fragment()  {
                         binding?.onBoardingPreviousButton?.visibility = View.VISIBLE
                         binding?.onBoardingNextButton?.text = resources.getText(R.string.finish)
                         binding?.onBoardingNextButton?.setOnClickListener {
+                            SharedPrefManager(requireContext()).setOnboardingSeen()
                             findNavController().navigate(R.id.action_onBoardingFragment_to_loginAndSignupFragment)
                         }
                         binding?.onBoardingPreviousButton?.setOnClickListener {
