@@ -9,6 +9,7 @@
     <string name="restaurant_listing_title">Delicious\nfood for you</string>
     <string name="search_view_text">Search in All</string>
     <string name="all_restaurants">All</string>
+    <string name="save">Save</string>
 
 
     <!--Add restaurant screen strings -->
@@ -49,6 +50,7 @@
     <string name="reorder_button">Repeat</string>
     <string name="detail">Details</string>
     <string name="last_orders_title">Last Orders</string>
+    <string name="choose_avatar">Choose Avatar</string>
 
 
     <string-array name="Cuisines">

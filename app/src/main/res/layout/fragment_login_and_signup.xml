@@ -48,6 +48,7 @@
             android:id="@+id/loginAndSignupTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#F6F0F0"
             android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

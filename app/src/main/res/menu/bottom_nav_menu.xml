@@ -8,7 +8,7 @@
     <item
         android:id="@+id/profileFragment"
         android:title=""
-        android:icon="@drawable/ic_profile" />
+        android:icon="@drawable/ic_profile2" />
 
     <item
         android:id="@+id/placeholder"
@@ -17,7 +17,7 @@
     <item
         android:id="@+id/orderFragment"
         android:title=""
-        android:icon="@drawable/ic_lastorder" />
+        android:icon="@drawable/ic_last_time" />
 
     <item
         android:id="@+id/settingFragment"

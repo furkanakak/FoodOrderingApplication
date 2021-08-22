@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F6F0F0"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="false"
-        app:lottie_rawRes="@raw/delivery"
-        app:lottie_repeatCount="0" />
+        app:lottie_rawRes="@raw/delivery2"
+        app:lottie_repeatCount="2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
