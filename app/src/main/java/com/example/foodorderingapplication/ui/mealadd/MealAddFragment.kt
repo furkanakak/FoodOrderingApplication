@@ -49,9 +49,6 @@ class MealAddFragment : Fragment() {
             setHomeAsUpIndicator(R.drawable.ic_back)
             setDisplayHomeAsUpEnabled(true)
         }
-        Glide.with(requireContext())
-            .load("https://firebasestorage.googleapis.com/v0/b/fooddeliveryapp-fe5bf.appspot.com/o/images%2Fpizza.jpg?alt=media&token=7ffc6831-d9ae-4e9a-96a9-7898bc546878")
-            .into(binding.addMealImageView)
 
         initializeRecyclerView()
         addListeners()
@@ -60,7 +57,6 @@ class MealAddFragment : Fragment() {
     private fun initializeRecyclerView() {
         ingredientsList = mutableListOf()
         ingredientAdapter = IngredientRecyclerViewAdapter(ingredientsList)
-
         layoutManager = FlexboxLayoutManager(activity)
         layoutManager.flexWrap = FlexWrap.WRAP
         layoutManager.flexDirection = FlexDirection.ROW
@@ -96,6 +92,7 @@ class MealAddFragment : Fragment() {
             return
         val ingredients: MutableList<String> = mutableListOf()
         val name = binding.mealNameEditText.editText?.text.toString()
+        val url = binding.mealUrlEditText.editText?.text.toString()
         val price = binding.mealPriceEditText.editText?.text.toString()
 
         ingredientsList.forEach {
@@ -104,7 +101,7 @@ class MealAddFragment : Fragment() {
             viewModel.addMeal(
                 args.restaurantId,
                 name,
-                "https://firebasestorage.googleapis.com/v0/b/fooddeliveryapp-fe5bf.appspot.com/o/images%2Fpizza.jpg?alt=media&token=7ffc6831-d9ae-4e9a-96a9-7898bc546878",
+                url,
                 price,
                 ingredients
             )

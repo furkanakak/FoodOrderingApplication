@@ -46,9 +46,7 @@ class RestaurantAddFragment : Fragment(){
             setHomeAsUpIndicator(R.drawable.ic_back)
             setDisplayHomeAsUpEnabled(true)
         }
-        Glide.with(requireContext())
-            .load("https://firebasestorage.googleapis.com/v0/b/fooddeliveryapp-fe5bf.appspot.com/o/images%2FRestaurant2.jpg?alt=media&token=3d28246b-52b4-4030-80bf-84799080fdf7")
-            .into(binding.addRestaurantImageView)
+
         addListeners()
         initializeCitySpinner()
         initializeCuisineSpinner()
@@ -78,6 +76,7 @@ class RestaurantAddFragment : Fragment(){
         if(hasEmptyFields())
             return
 
+        val url = binding.restaurantUrlEditText.editText?.text.toString()
         val name = binding.restaurantNameEditText.editText?.text.toString()
         val cuisine = binding.cuisineSpinner.selectedItem.toString()
         val deliveryInfo = binding.restaurantDeliveryInfoEditText.editText?.text.toString()
@@ -95,7 +94,7 @@ class RestaurantAddFragment : Fragment(){
             cuisine,
             deliveryInfo,
             deliveryTime,
-            "https://firebasestorage.googleapis.com/v0/b/fooddeliveryapp-fe5bf.appspot.com/o/images%2FRestaurant2.jpg?alt=media&token=3d28246b-52b4-4030-80bf-84799080fdf7",
+            url,
             address,
             district,
             minDeliveryFee,

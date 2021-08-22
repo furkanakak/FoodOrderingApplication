@@ -51,6 +51,9 @@
     <string name="detail">Details</string>
     <string name="last_orders_title">Last Orders</string>
     <string name="choose_avatar">Choose Avatar</string>
+    <string name="restaurant_Image_url">"restaurant Url "</string>
+    <string name="restaurant_image_url">restaurant Image url</string>
+    <string name="food_url">food url</string>
 
 
     <string-array name="Cuisines">

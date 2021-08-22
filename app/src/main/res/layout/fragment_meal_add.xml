@@ -45,6 +45,29 @@
                 app:layout_constraintTop_toBottomOf="@id/addMealTitle"
                 tools:ignore="ContentDescription" />
 
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mealUrlEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/food_url"
+                app:boxBackgroundColor="@color/gray_light"
+                app:expandedHintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addMealImageView"
+                app:layout_constraintWidth_percent="0.9"
+                app:startIconDrawable="@drawable/ic_url">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/mealNameEditText"
                 android:layout_width="0dp"
@@ -55,7 +78,7 @@
                 app:expandedHintEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/addMealImageView"
+                app:layout_constraintTop_toBottomOf="@id/mealUrlEditText"
                 app:layout_constraintWidth_percent="0.9"
                 app:startIconDrawable="@drawable/ic_icon_meal_name">
 
