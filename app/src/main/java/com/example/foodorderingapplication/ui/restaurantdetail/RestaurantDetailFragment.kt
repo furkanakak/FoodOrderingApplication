@@ -49,9 +49,11 @@ class RestaurantDetailFragment : Fragment() {
             when (it.status) {
                 Resource.Status.LOADING -> {
                     setLoading(true)
+                    println("LOADING ---")
                 }
                 Resource.Status.SUCCESS -> {
                     setLoading(false)
+                    println("SUCCESS ---")
                     val restaurant = it.data!!.data
                     val options = RequestOptions().placeholder(R.mipmap.oops_404)
                     Glide.with(binding.restaurantImageView.context)
@@ -143,12 +145,12 @@ class RestaurantDetailFragment : Fragment() {
 
     private fun setLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.progressBar.show()
+            binding.restaurantDetailProgressBar.show()
             binding.restaurantImageView.gone()
             binding.backButton.gone()
             binding.restaurantDetailFloatingActionButton.gone()
         } else {
-            binding.progressBar.gone()
+            binding.restaurantDetailProgressBar.gone()
             binding.restaurantImageView.show()
             binding.backButton.show()
             binding.restaurantDetailFloatingActionButton.show()

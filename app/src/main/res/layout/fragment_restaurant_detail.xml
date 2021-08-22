@@ -26,7 +26,7 @@
         android:scaleType="centerCrop"
         android:paddingVertical="16dp"
         android:src="@mipmap/oops_404_foreground"
-        android:background="@null"
+        android:background="@color/black"
         app:shapeAppearanceOverlay="@style/CircularImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,13 +54,13 @@
         app:layout_constraintTop_toBottomOf="@+id/restaurantDetailRestaurantName"
         app:tabIndicatorColor="#FA4A0C"
         app:tabIndicatorFullWidth="false"
-        app:tabSelectedTextColor="#FA4A0C">
-    </com.google.android.material.tabs.TabLayout>
+        app:tabSelectedTextColor="#FA4A0C"
+        tools:ignore="SpeakableTextPresentCheck"></com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/restaurantDetailViewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:paddingVertical="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,24 +81,18 @@
         android:id="@+id/restaurantDetailFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="#6A6664"
         android:elevation="3dp"
-        android:src="@drawable/ic_add"
         android:padding="16dp"
-        app:tint="#FFFFFF"
+        android:src="@drawable/ic_add"
         app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:maxImageSize="25dp" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:maxImageSize="25dp"
+        app:tint="#FFFFFF"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

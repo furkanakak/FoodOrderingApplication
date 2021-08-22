@@ -5,10 +5,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.foodorderingapplication.model.entity.restaurant.Restaurant
 import com.example.foodorderingapplication.ui.meal.MealListFragment
+import com.example.foodorderingapplication.ui.onboarding.FirstOnBoardingFragment
+import com.example.foodorderingapplication.ui.onboarding.OnBoardingFragment
 
 
 private const val FRAGMENT_COUNT = 2
-class RestaurantDetailViewPagerAdapter(fragment : FragmentActivity, val restaurant : Restaurant) : FragmentStateAdapter(fragment){
+class RestaurantDetailViewPagerAdapter(activity : FragmentActivity, val restaurant : Restaurant) :
+    FragmentStateAdapter(activity){
     override fun getItemCount(): Int = FRAGMENT_COUNT
 
 

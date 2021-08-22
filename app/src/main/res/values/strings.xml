@@ -45,6 +45,10 @@
     <string name="restaurant_delivery_info">Delivery Info</string>
     <string name="ingredients_error">Please add ingredients</string>
     <string name="response_not_found">Ups!… No results found</string>
+    <string name="total">total</string>
+    <string name="reorder_button">Repeat</string>
+    <string name="detail">Details</string>
+    <string name="last_orders_title">Last Orders</string>
 
 
     <string-array name="Cuisines">

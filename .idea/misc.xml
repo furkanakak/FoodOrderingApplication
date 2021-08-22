@@ -22,6 +22,7 @@
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/drawable/ic_icon_phone.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/drawable/ic_icon_website.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/drawable/ic_restaurant_name_background.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/drawable/icon_repeat.xml" value="0.12222222222222222" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/drawable/searchview_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/drawable/vie_bg.xml" value="0.21388888888888888" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -31,7 +32,7 @@
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_login.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_login_and_signup.xml" value="0.176" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_meal_add.xml" value="0.176" />
-        <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_meal_details.xml" value="0.1828125" />
+        <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_meal_details.xml" value="0.264" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_meal_list.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_onboarding.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/fragment_order.xml" value="0.1716485507246377" />
@@ -48,6 +49,7 @@
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/ingredient_card_item.xml" value="0.1480978260869565" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/ingredient_chack_item.xml" value="0.15715579710144928" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/ingredient_check_item.xml" value="0.176" />
+        <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/item_myorders.xml" value="0.264" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/meal_item.xml" value="0.264" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/restaurant_item.xml" value="0.176" />
         <entry key="..\:/Users/furkan/AndroidStudioProjects/FoodOrderingApplication/app/src/main/res/layout/slider_item.xml" value="0.13020833333333334" />

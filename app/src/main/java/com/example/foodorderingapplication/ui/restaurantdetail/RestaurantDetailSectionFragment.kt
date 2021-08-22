@@ -20,7 +20,7 @@ class RestaurantDetailSectionFragment(var restaurant : Restaurant) : Fragment() 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      //  setData()
+        setData()
     }
     private fun setData() {
         binding.deliveryInfoTextView.text = restaurant.deliveryInfo

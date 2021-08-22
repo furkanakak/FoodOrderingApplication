@@ -34,8 +34,20 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.MealsListViewHold
             mealCardView.setOnClickListener {
                 listener?.onClick(meal)
             }
+
         }
     }
+    fun setMealList(mealList: ArrayList<Meal>) {
+        this.mealList = mealList
+        print(this.mealList)
+        println(this.mealList.size)
+        notifyDataSetChanged()
+    }
+
+    fun addListener(listener: IMealOnClick) {
+        this.listener = listener
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealsListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_item, parent, false)
@@ -44,9 +56,12 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.MealsListViewHold
 
     override fun onBindViewHolder(holder: MealsListViewHolder, position: Int) {
         val meal = mealList[position]
+
         holder.setMeal(meal, listener)
     }
 
     override fun getItemCount(): Int = mealList.size
+
+
 
 }

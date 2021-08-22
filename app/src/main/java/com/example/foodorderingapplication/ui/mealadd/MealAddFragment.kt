@@ -1,23 +1,33 @@
 package com.example.foodorderingapplication.ui.mealadd
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentMealAddBinding
 import com.example.foodorderingapplication.model.entity.Ingredient
+import com.example.foodorderingapplication.utils.Resource
 import com.example.foodorderingapplication.utils.afterTextChanged
+import com.example.foodorderingapplication.utils.gone
+import com.example.foodorderingapplication.utils.show
 import com.google.android.flexbox.*
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MealAddFragment : Fragment() {
     private val args: MealAddFragmentArgs by navArgs()
     private lateinit var binding: FragmentMealAddBinding
+    private val viewModel: MealAddViewModel by viewModels()
     private lateinit var ingredientsList : MutableList<Ingredient>
     private lateinit var ingredientAdapter : IngredientRecyclerViewAdapter
     private lateinit var layoutManager : FlexboxLayoutManager
@@ -90,6 +100,42 @@ class MealAddFragment : Fragment() {
 
         ingredientsList.forEach {
             ingredients.add(it.ingredient)
+
+            viewModel.addMeal(
+                args.restaurantId,
+                name,
+                "https://firebasestorage.googleapis.com/v0/b/fooddeliveryapp-fe5bf.appspot.com/o/images%2Fpizza.jpg?alt=media&token=7ffc6831-d9ae-4e9a-96a9-7898bc546878",
+                price,
+                ingredients
+            )
+                .observe(viewLifecycleOwner, {
+                    when (it.status) {
+                        Resource.Status.LOADING -> {
+                            Log.i(MealAddFragment::class.java.name, it.message.toString())
+                            binding.addMealProgressBar.show()
+                        }
+                        Resource.Status.SUCCESS -> {
+                            Log.i(MealAddFragment::class.java.name, it.message.toString())
+                            binding.addMealProgressBar.gone()
+                            val action =
+                                MealAddFragmentDirections.actionMealAddFragmentToRestaurantDetailFragment(
+                                    it.data!!.message.restaurant
+                                )
+                            findNavController().navigate(action)
+                        }
+                        Resource.Status.ERROR -> {
+                            //Error response doesn't have data, restaurant will be null. Return home page.
+                            Log.e(MealAddFragment::class.java.name, it.message.toString())
+                            binding.addMealProgressBar.gone()
+                            Toast.makeText(context, "Error occured!", Toast.LENGTH_LONG).show()
+                            val action =
+                                MealAddFragmentDirections.actionMealAddFragmentToRestaurantDetailFragment(
+                                    it.data!!.message.restaurant
+                                )
+                            findNavController().navigate(action)
+                        }
+                    }
+                })
         }
     }
 

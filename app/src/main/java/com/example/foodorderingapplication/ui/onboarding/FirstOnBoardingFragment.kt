@@ -20,6 +20,11 @@ class FirstOnBoardingFragment : Fragment() {
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        println("firstFragment çalıştı")
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
