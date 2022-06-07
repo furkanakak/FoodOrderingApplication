@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodorderingapplication.databinding.FragmentMealListBinding
 import com.example.foodorderingapplication.model.entity.meal.Meal
 import com.example.foodorderingapplication.model.entity.restaurant.Restaurant
-import com.example.foodorderingapplication.ui.restaurantdetail.RestaurantDetailFragment
 import com.example.foodorderingapplication.ui.restaurantdetail.RestaurantDetailFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,18 +24,18 @@ class MealListFragment(private val restaurant: Restaurant) : Fragment(), IMealOn
     ): View {
         binding = FragmentMealListBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        System.out.println("List Fragment calisiyor")
+        println("List Fragment calisiyor")
         binding.mealsListRecyclerView.layoutManager = LinearLayoutManager(context)
         adapter.setMealList(restaurant.meals)
         adapter.addListener(this)
         binding.mealsListRecyclerView.adapter = adapter
 
     }
+
     override fun onClick(meal: Meal) {
         val action =
             RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealDetailsFragment(
@@ -46,6 +45,4 @@ class MealListFragment(private val restaurant: Restaurant) : Fragment(), IMealOn
             )
         findNavController().navigate(action)
     }
-
-
 }

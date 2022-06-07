@@ -22,7 +22,7 @@ import com.example.foodorderingapplication.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MealDetailsFragment : Fragment()  {
+class MealDetailsFragment : Fragment() {
     private val args: MealDetailsFragmentArgs by navArgs()
     private val viewModel: MealDetailsViewModel by viewModels()
     private lateinit var binding: FragmentMealDetailsBinding
@@ -36,7 +36,6 @@ class MealDetailsFragment : Fragment()  {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ingredientsDummy = ArrayList<String>()
@@ -47,7 +46,7 @@ class MealDetailsFragment : Fragment()  {
     }
 
     private fun initViews() {
-        viewModel.getMealDetails(args.mealId).observe(viewLifecycleOwner, {
+        viewModel.getMealDetails(args.mealId).observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.LOADING -> {
                     Log.e("Loading", "loading")
@@ -66,15 +65,12 @@ class MealDetailsFragment : Fragment()  {
                     adapter.setIngredients(meal.ingredients)
                     binding.ingredientsRecyclerView.adapter = adapter
                     binding.priceTextView.text = meal.price
-
-                    //_binding.homeTextView.text = "Count: ${it.data?.characters?.size}
-
                 }
                 Resource.Status.ERROR -> {
                     setLoading(false)
                 }
             }
-        })
+        }
     }
 
     private fun initListener() {
@@ -82,7 +78,7 @@ class MealDetailsFragment : Fragment()  {
             findNavController().popBackStack()
         }
 
-        binding.shareButton.setOnClickListener{
+        binding.shareButton.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 putExtra(Intent.EXTRA_TEXT, "${args.restaurantName} \n ${viewModel.meal?.name}")
@@ -95,7 +91,7 @@ class MealDetailsFragment : Fragment()  {
 
         binding.orderButton.setOnClickListener {
             val orderAddRequest = OrderAddRequest(args.restaurantId, args.mealId)
-            viewModel.postOrder(orderAddRequest).observe(viewLifecycleOwner, {
+            viewModel.postOrder(orderAddRequest).observe(viewLifecycleOwner) {
                 when (it.status) {
                     Resource.Status.LOADING -> {
                         Log.e("Loading", "loading")
@@ -113,9 +109,8 @@ class MealDetailsFragment : Fragment()  {
                         binding.ingredientsRecyclerView.show()
                     }
                 }
-            })
+            }
         }
-
     }
 
 
@@ -137,6 +132,4 @@ class MealDetailsFragment : Fragment()  {
             binding.totalLinearLayout.show()
         }
     }
-
-
 }

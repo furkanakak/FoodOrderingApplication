@@ -34,10 +34,6 @@ class RestaurantAddViewModel @Inject constructor(
             name, cuisine, deliveryInfo, deliveryTime,
             imageUrl, address, district, minDeliveryFee, paymentMethods, phone, website
         )
-
         return apiRepository.postRestaurant(request)
-
     }
-
-
 }

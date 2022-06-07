@@ -11,7 +11,7 @@ import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentOnboardingBinding
 import com.example.foodorderingapplication.model.local.SharedPrefManager
 
-class OnBoardingFragment : Fragment()  {
+class OnBoardingFragment : Fragment() {
     private var binding: FragmentOnboardingBinding? = null
 
     override fun onCreateView(
@@ -19,9 +19,10 @@ class OnBoardingFragment : Fragment()  {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentOnboardingBinding.inflate(inflater,container,false)
+        binding = FragmentOnboardingBinding.inflate(inflater, container, false)
         return binding?.root
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
@@ -38,26 +39,27 @@ class OnBoardingFragment : Fragment()  {
         binding?.onBoardingViewPager?.adapter = adapter
         binding?.onBoardingViewPager?.setPageTransformer(Transformation())
         binding?.onBoardingIndicator?.setViewPager(binding?.onBoardingViewPager)
-        binding?.onBoardingViewPager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        binding?.onBoardingViewPager?.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when (position) {
                     0 -> {
                         binding?.onBoardingPreviousButton?.visibility = View.GONE
                         binding?.onBoardingNextButton?.setOnClickListener {
-                            binding?.onBoardingViewPager?.currentItem = + 1
+                            binding?.onBoardingViewPager?.currentItem = +1
                         }
                     }
                     1 -> {
                         binding?.onBoardingPreviousButton?.visibility = View.VISIBLE
                         binding?.onBoardingNextButton?.text = resources.getText(R.string.next)
                         binding?.onBoardingNextButton?.setOnClickListener {
-                            binding?.onBoardingViewPager?.currentItem = binding!!.onBoardingViewPager.currentItem + 1
+                            binding?.onBoardingViewPager?.currentItem =
+                                binding!!.onBoardingViewPager.currentItem + 1
                         }
                         binding?.onBoardingPreviousButton?.setOnClickListener {
-                            binding?.onBoardingViewPager?.currentItem = - 1
+                            binding?.onBoardingViewPager?.currentItem = -1
                         }
-
                     }
                     else -> {
                         binding?.onBoardingPreviousButton?.visibility = View.VISIBLE
@@ -67,14 +69,12 @@ class OnBoardingFragment : Fragment()  {
                             findNavController().navigate(R.id.action_onBoardingFragment_to_loginAndSignupFragment)
                         }
                         binding?.onBoardingPreviousButton?.setOnClickListener {
-                            binding?.onBoardingViewPager?.currentItem = binding!!.onBoardingViewPager.currentItem - 1
+                            binding?.onBoardingViewPager?.currentItem =
+                                binding!!.onBoardingViewPager.currentItem - 1
                         }
                     }
                 }
-
             }
         })
     }
-
-
 }

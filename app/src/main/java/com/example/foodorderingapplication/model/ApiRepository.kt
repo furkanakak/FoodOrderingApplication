@@ -78,7 +78,7 @@ class ApiRepository @Inject constructor(
         authRemoteDataSource.getUser()
     }
 
-    fun updateUser(user : UserRequest) = performNetworkOperation {
+    fun updateUser(user: UserRequest) = performNetworkOperation {
         authRemoteDataSource.updateUser(request = user)
     }
 

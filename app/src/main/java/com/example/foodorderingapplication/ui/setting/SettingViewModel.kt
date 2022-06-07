@@ -25,5 +25,4 @@ class SettingViewModel @Inject constructor(
 
     fun updateUser(userRequest: UserRequest): LiveData<Resource<User>> =
         apiRepository.updateUser(userRequest)
-
 }

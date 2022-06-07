@@ -15,7 +15,5 @@ class ProfileFragmentViewModel @Inject constructor(
     private val apiRepository: ApiRepository
 ) : ViewModel() {
 
-
     fun getUser(): LiveData<Resource<UserResponse>> = apiRepository.getUser()
-
 }

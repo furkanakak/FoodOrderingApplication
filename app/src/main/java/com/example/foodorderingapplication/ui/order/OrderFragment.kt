@@ -15,7 +15,7 @@ import com.example.foodorderingapplication.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OrderFragment : Fragment(){
+class OrderFragment : Fragment() {
     private lateinit var binding: FragmentOrderBinding
     private val viewModel: OrderFragmentViewModel by viewModels()
     val adapter = OrderRecyclerViewAdapter()
@@ -35,7 +35,7 @@ class OrderFragment : Fragment(){
     }
 
     private fun getOrders() {
-        viewModel.getOrders().observe(viewLifecycleOwner, { response ->
+        viewModel.getOrders().observe(viewLifecycleOwner) { response ->
 
             when (response.status) {
                 Resource.Status.LOADING -> {
@@ -53,24 +53,20 @@ class OrderFragment : Fragment(){
 
                 Resource.Status.ERROR -> {
                     println("${response.message}")
-                    Log.v("order",response.toString())
+                    Log.v("order", response.toString())
                     setLoading(false)
                 }
             }
-        })
+        }
     }
 
     private fun setLoading(isLoading: Boolean) {
-        if(isLoading)
-        {
-            binding?.orderProgressBar?.show()
-            binding?.orderRecyclerView?.gone()
-        }
-        else
-        {
-            binding?.orderProgressBar?.gone()
-            binding?.orderRecyclerView?.show()
+        if (isLoading) {
+            binding.orderProgressBar.show()
+            binding.orderRecyclerView.gone()
+        } else {
+            binding.orderProgressBar.gone()
+            binding.orderRecyclerView.show()
         }
     }
-
 }

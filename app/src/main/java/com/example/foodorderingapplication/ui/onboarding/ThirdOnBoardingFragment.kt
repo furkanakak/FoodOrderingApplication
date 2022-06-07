@@ -16,12 +16,12 @@ class ThirdOnBoardingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentThirdOnboardingBinding.inflate(inflater,container,false)
+        binding = FragmentThirdOnboardingBinding.inflate(inflater, container, false)
         return binding?.root
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
-
 }

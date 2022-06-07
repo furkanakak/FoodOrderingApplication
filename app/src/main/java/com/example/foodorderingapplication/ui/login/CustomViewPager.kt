@@ -28,6 +28,4 @@ class CustomViewPager(manager: FragmentManager) : FragmentStatePagerAdapter(
         fragmentList.add(fragment)
         titleList.add(title)
     }
-
-
 }

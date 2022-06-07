@@ -1,6 +1,5 @@
 package com.example.foodorderingapplication.ui.profile
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,7 +13,6 @@ import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentProfileSecondBinding
 import com.example.foodorderingapplication.model.entity.User
 import com.example.foodorderingapplication.utils.Resource
-import com.example.foodorderingapplication.utils.gone
 import com.example.foodorderingapplication.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,13 +44,13 @@ class ProfileFragment : Fragment() {
     }
 
     private fun getProfile() {
-        viewModel.getUser().observe(viewLifecycleOwner, { response ->
+        viewModel.getUser().observe(viewLifecycleOwner) { response ->
             when (response.status) {
                 Resource.Status.LOADING -> {
                     setLoading(true)
                 }
                 Resource.Status.SUCCESS -> {
-                   setLoading(false)
+                    setLoading(false)
                     setField(response.data?.user)
                 }
                 Resource.Status.ERROR -> {
@@ -60,17 +58,15 @@ class ProfileFragment : Fragment() {
                     Toast.makeText(context, "Operation Failed", Toast.LENGTH_LONG).show()
                 }
             }
-        })
+        }
     }
 
     private fun setLoading(isLoading: Boolean) {
-        if(isLoading)
-        {
-           // binding.profileProgressBar.show()
-          //  binding.profileCont.gone()
-        }
-        else{
-        //   binding.profileCont.show()
+        if (isLoading) {
+            // binding.profileProgressBar.show()
+            //  binding.profileCont.gone()
+        } else {
+            //   binding.profileCont.show()
         }
     }
 
@@ -83,10 +79,10 @@ class ProfileFragment : Fragment() {
     }
 
     companion object {
-        fun getImageResource(image : String?) : Int {
+        fun getImageResource(image: String?): Int {
             val resource = try {
                 image?.toInt()
-            } catch (e : Exception) {
+            } catch (e: Exception) {
                 Log.v("Profile Avatar", e.message.toString())
                 R.mipmap.oops_404_foreground
             }

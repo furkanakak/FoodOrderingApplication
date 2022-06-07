@@ -7,4 +7,4 @@ data class Category(
     val title: String,
     @SerializedName("image")
     val pic: Int
-    )
+)

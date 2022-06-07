@@ -1,10 +1,9 @@
 package com.example.foodorderingapplication.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.ActivityMainBinding
@@ -24,18 +23,17 @@ class MainActivity : AppCompatActivity() {
         setListener()
     }
 
-    private fun init()
-    {
+    private fun init() {
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
     }
+
     private fun setListener() {
         navController = Navigation.findNavController(this, R.id.fragment)
-        NavigationUI.setupWithNavController(binding.bottomNavigationView,navController)
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
     }
+
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, null)
     }
-
-
 }

@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentRestaurantAddBinding
 import com.example.foodorderingapplication.utils.Resource
@@ -23,8 +22,9 @@ import com.example.foodorderingapplication.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
+
 @AndroidEntryPoint
-class RestaurantAddFragment : Fragment(){
+class RestaurantAddFragment : Fragment() {
     private lateinit var binding: FragmentRestaurantAddBinding
     private val viewModel: RestaurantAddViewModel by viewModels()
 
@@ -73,7 +73,7 @@ class RestaurantAddFragment : Fragment(){
     }
 
     private fun addRestaurant() {
-        if(hasEmptyFields())
+        if (hasEmptyFields())
             return
 
         val url = binding.restaurantUrlEditText.editText?.text.toString()
@@ -101,7 +101,7 @@ class RestaurantAddFragment : Fragment(){
             paymentMethods,
             phone,
             website
-        ).observe(viewLifecycleOwner, {
+        ).observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.LOADING -> {
                     Log.i(RestaurantAddFragment::class.java.name, it.message.toString())
@@ -119,7 +119,7 @@ class RestaurantAddFragment : Fragment(){
                     findNavController().navigate(R.id.action_restaurantAddFragment_to_restaurantListingFragment)
                 }
             }
-        })
+        }
 
 
     }
@@ -187,29 +187,29 @@ class RestaurantAddFragment : Fragment(){
         binding.cuisineSpinner.adapter = adapter
     }
 
-    private fun hasEmptyFields() : Boolean{
-        if(binding.restaurantNameEditText.editText?.text.isNullOrEmpty()){
+    private fun hasEmptyFields(): Boolean {
+        if (binding.restaurantNameEditText.editText?.text.isNullOrEmpty()) {
             binding.restaurantNameEditText.error = "This can't be empty!"
             return true
         } else {
             binding.restaurantNameEditText.error = null
         }
 
-        if(binding.restaurantPhoneEditText.editText?.text.isNullOrEmpty()){
+        if (binding.restaurantPhoneEditText.editText?.text.isNullOrEmpty()) {
             binding.restaurantPhoneEditText.error = "This can't be empty!"
             return true
         } else {
             binding.restaurantPhoneEditText.error = null
         }
 
-        if(binding.restaurantWebsiteEditText.editText?.text.isNullOrEmpty()){
+        if (binding.restaurantWebsiteEditText.editText?.text.isNullOrEmpty()) {
             binding.restaurantWebsiteEditText.error = "This can't be empty!"
             return true
         } else {
             binding.restaurantWebsiteEditText.error = null
         }
 
-        if(binding.restaurantOpenHourEditText.text.isNullOrEmpty()){
+        if (binding.restaurantOpenHourEditText.text.isNullOrEmpty()) {
             binding.errorTextView.visibility = View.VISIBLE
             binding.errorTextView.text = getString(R.string.restaurant_open_hour_error)
             return true
@@ -217,7 +217,7 @@ class RestaurantAddFragment : Fragment(){
             binding.errorTextView.visibility = View.GONE
         }
 
-        if(binding.restaurantCloseHourEditText.text.isNullOrEmpty()){
+        if (binding.restaurantCloseHourEditText.text.isNullOrEmpty()) {
             binding.errorTextView.visibility = View.VISIBLE
             binding.errorTextView.text = getString(R.string.restaurant_close_hour_error)
             return true
@@ -225,41 +225,33 @@ class RestaurantAddFragment : Fragment(){
             binding.errorTextView.visibility = View.GONE
         }
 
-        if(binding.restaurantAddressEditText.editText?.text.isNullOrEmpty()){
+        if (binding.restaurantAddressEditText.editText?.text.isNullOrEmpty()) {
             binding.restaurantAddressEditText.error = "This can't be empty!"
             return true
         } else {
             binding.restaurantAddressEditText.error = null
         }
 
-        if(binding.restaurantDeliveryTimeLayout.editText?.text.isNullOrEmpty()){
+        if (binding.restaurantDeliveryTimeLayout.editText?.text.isNullOrEmpty()) {
             binding.restaurantDeliveryTimeLayout.error = "Empty!"
             return true
         } else {
             binding.restaurantDeliveryTimeLayout.error = null
         }
 
-        if(binding.restaurantDeliveryFeeLayout.editText?.text.isNullOrEmpty()){
+        if (binding.restaurantDeliveryFeeLayout.editText?.text.isNullOrEmpty()) {
             binding.restaurantDeliveryFeeLayout.error = "Empty!"
             return true
         } else {
             binding.restaurantDeliveryFeeLayout.error = null
         }
 
-        if(binding.restaurantDeliveryInfoEditText.editText?.text.isNullOrEmpty()){
+        if (binding.restaurantDeliveryInfoEditText.editText?.text.isNullOrEmpty()) {
             binding.restaurantDeliveryInfoEditText.error = "This can't be empty!"
             return true
         } else {
             binding.restaurantDeliveryInfoEditText.error = null
         }
-
         return false
     }
-
-
-
-
-
-
-
 }

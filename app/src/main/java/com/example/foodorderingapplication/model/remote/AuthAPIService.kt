@@ -31,9 +31,8 @@ interface AuthAPIService {
     suspend fun getOrders(): Response<OrderResponse>
 
     @PUT("auth/updateDetails")
-    suspend fun updateUser(@Body request : UserRequest) : Response<User>
+    suspend fun updateUser(@Body request: UserRequest): Response<User>
 
     @GET("auth/profile")
-    suspend fun getUser() : Response<UserResponse>
-
+    suspend fun getUser(): Response<UserResponse>
 }

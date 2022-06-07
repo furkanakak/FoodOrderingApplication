@@ -1,5 +1,6 @@
 package com.example.foodorderingapplication.ui.restaurantlisting
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,19 +9,18 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapplication.R
 
+class RestaurantListingSliderAdapter(val context: Context) :
+    RecyclerView.Adapter<RestaurantListingSliderAdapter.MyViewHolder>() {
 
+    lateinit var list: List<Int>
 
-class RestaurantListingSliderAdapter(val context : Context) : RecyclerView.Adapter<RestaurantListingSliderAdapter.MyViewHolder>() {
-
-    lateinit var list : List<Int>
-
-    fun setContentList(list: List<Int>)
-    {
+    @SuppressLint("NotifyDataSetChanged")
+    fun setContentList(list: List<Int>) {
         this.list = list
         notifyDataSetChanged()
     }
 
-    inner class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
+    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var image = itemView.findViewById<ImageView>(R.id.slider_item_imageview)
     }
 
@@ -28,7 +28,7 @@ class RestaurantListingSliderAdapter(val context : Context) : RecyclerView.Adapt
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.slider_item,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.slider_item, parent, false)
         return MyViewHolder(view)
     }
 
@@ -37,6 +37,5 @@ class RestaurantListingSliderAdapter(val context : Context) : RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int = list.size
-
 
 }

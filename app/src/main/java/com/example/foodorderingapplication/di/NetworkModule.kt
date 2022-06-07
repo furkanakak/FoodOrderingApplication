@@ -76,12 +76,13 @@ class NetworkModule {
     ): AuthOkHttpClient {
         return provideAuthOkHttpClient(
             OkHttpClient.Builder()
-            .addInterceptor {
-                val token = localDataSource.getToken()
-                val request = it.request().newBuilder().addHeader("Authorization", token!!).build()
-                it.proceed(request)
-            }
-            .build())
+                .addInterceptor {
+                    val token = localDataSource.getToken()
+                    val request =
+                        it.request().newBuilder().addHeader("Authorization", token!!).build()
+                    it.proceed(request)
+                }
+                .build())
     }
 
     @Provides

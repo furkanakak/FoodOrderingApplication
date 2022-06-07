@@ -19,12 +19,11 @@ class AuthRemoteDataSource @Inject constructor(private val authAPIService: AuthA
 
     suspend fun getOrders() = getResult { authAPIService.getOrders() }
 
-    suspend fun updateUser(request : UserRequest) = getResult { authAPIService.updateUser(request) }
+    suspend fun updateUser(request: UserRequest) = getResult { authAPIService.updateUser(request) }
 
     suspend fun getUser() = getResult { authAPIService.getUser() }
 
     suspend fun postOrder(orderAddRequest: OrderAddRequest) = getResult {
         authAPIService.postOrder(orderAddRequest)
     }
-
 }

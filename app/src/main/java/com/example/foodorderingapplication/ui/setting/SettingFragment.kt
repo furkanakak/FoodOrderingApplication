@@ -19,12 +19,10 @@ import com.example.foodorderingapplication.model.entity.profile.UserRequest
 import com.example.foodorderingapplication.ui.profile.ProfileFragment
 import com.example.foodorderingapplication.ui.splash.SplashActivity
 import com.example.foodorderingapplication.utils.Resource
-import com.example.foodorderingapplication.utils.gone
-import com.example.foodorderingapplication.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingFragment : Fragment(){
+class SettingFragment : Fragment() {
     private lateinit var binding: FragmentSettingsSecondBinding
     private val viewModel: SettingViewModel by viewModels()
     private var image: Int = R.mipmap.oops_404_foreground
@@ -42,12 +40,11 @@ class SettingFragment : Fragment(){
         initViews()
         addListeners()
     }
+
     private fun initViews() {
-        viewModel.getUser().observe(viewLifecycleOwner, { response ->
+        viewModel.getUser().observe(viewLifecycleOwner) { response ->
             when (response.status) {
-                Resource.Status.LOADING -> {
-                //    binding.settingsProgressBar.show()
-                }
+                Resource.Status.LOADING -> {}
                 Resource.Status.SUCCESS -> {
                     setField(response.data?.user)
                     isSettingVisible(true)
@@ -56,12 +53,11 @@ class SettingFragment : Fragment(){
                     isSettingVisible(false)
                 }
             }
-        })
+        }
     }
 
 
     private fun isSettingVisible(isVisible: Boolean) {
-     //   binding.settingsProgressBar.gone()
         binding.container.isVisible = isVisible
         if (isVisible.not()) {
             AlertDialog.Builder(context)
@@ -88,6 +84,7 @@ class SettingFragment : Fragment(){
             else -> R.mipmap.oops_404_foreground
         }
     }
+
     private fun getRadioButtonId(image: Int): Int {
         return when (image) {
             R.mipmap.avatar_1_foreground -> R.id.avatarRadioButton1
@@ -109,10 +106,10 @@ class SettingFragment : Fragment(){
         binding.addressEditText.setText(user?.address)
         binding.phoneNumberEditText.setText(user?.phone)
         user?.paymentMethod?.let {
-        image = ProfileFragment.getImageResource(user?.profileImage)
-        binding.avatarImageView.setImageResource(ProfileFragment.getImageResource(user?.profileImage))
+            image = ProfileFragment.getImageResource(user.profileImage)
+            binding.avatarImageView.setImageResource(ProfileFragment.getImageResource(user.profileImage))
+        }
     }
-}
 
     private fun updateUser() {
         val name = binding.nameEditText.text.toString()
@@ -122,7 +119,7 @@ class SettingFragment : Fragment(){
 
 
         val user = UserRequest(mail, name, address, phone, image.toString(), 1)
-        viewModel.updateUser(user).observe(viewLifecycleOwner, { response ->
+        viewModel.updateUser(user).observe(viewLifecycleOwner) { response ->
             when (response.status) {
                 Resource.Status.LOADING -> {
                     binding.profileProgressBarr
@@ -135,7 +132,7 @@ class SettingFragment : Fragment(){
                     isSettingVisible(false)
                 }
             }
-        })
+        }
     }
 
     private fun addListeners() {

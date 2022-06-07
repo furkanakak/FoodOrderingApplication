@@ -7,5 +7,4 @@ data class Ingredient(
     var ingredient: String,
     @SerializedName("includes")
     var includes: Boolean
-
 )
