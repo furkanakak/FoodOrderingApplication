@@ -28,7 +28,7 @@ fun EditText.afterTextChanged(textInputLayout: TextInputLayout) {
         }
 
         override fun afterTextChanged(editable: Editable?) {
-            if(!editable.isNullOrEmpty())
+            if (!editable.isNullOrEmpty())
                 textInputLayout.error = null
             else
                 textInputLayout.error = "This can't be empty"

@@ -1,5 +1,7 @@
 package com.example.foodorderingapplication.model.entity.meal
+
 import com.google.gson.annotations.SerializedName
+
 data class Meal(
     @SerializedName("_id")
     val id: String,

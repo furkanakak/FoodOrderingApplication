@@ -13,8 +13,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentRestaurantDetailBinding
-import com.example.foodorderingapplication.model.entity.meal.Meal
-import com.example.foodorderingapplication.model.entity.restaurant.Restaurant
 import com.example.foodorderingapplication.utils.Resource
 import com.example.foodorderingapplication.utils.gone
 import com.example.foodorderingapplication.utils.show
@@ -39,13 +37,12 @@ class RestaurantDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initViews()
         addListeners()
     }
 
     private fun initViews() {
-        viewModel.getRestaurantDetail(args.restaurantId).observe(viewLifecycleOwner,{
+        viewModel.getRestaurantDetail(args.restaurantId).observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.LOADING -> {
                     setLoading(true)
@@ -67,7 +64,7 @@ class RestaurantDetailFragment : Fragment() {
                     setLoading(false)
                 }
             }
-        })
+        }
     }
 
     private fun addListeners() {
@@ -81,8 +78,8 @@ class RestaurantDetailFragment : Fragment() {
                 )
             findNavController().navigate(action)
         }
-        binding.restaurantDetailTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener
-        {
+        binding.restaurantDetailTabLayout.addOnTabSelectedListener(object :
+            TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.position == 0) {
                     changeImageVisibility(true)
@@ -106,11 +103,7 @@ class RestaurantDetailFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 Log.w("Reselected", "Tab reselected")
             }
-
         })
-
-
-
     }
 
     private fun initViewPager(adapter: RestaurantDetailViewPagerAdapter) {
@@ -118,7 +111,7 @@ class RestaurantDetailFragment : Fragment() {
         TabLayoutMediator(
             binding.restaurantDetailTabLayout,
             binding.restaurantDetailViewPager
-        ){ tab, position ->
+        ) { tab, position ->
             if (position == 0) {
                 tab.text = "Details"
 
@@ -134,6 +127,7 @@ class RestaurantDetailFragment : Fragment() {
         if (visible) binding.restaurantImageView.visibility =
             View.VISIBLE else binding.restaurantImageView.visibility = View.GONE
     }
+
     override fun onResume() {
         super.onResume()
         when (selectedTab) {
@@ -154,10 +148,6 @@ class RestaurantDetailFragment : Fragment() {
             binding.restaurantImageView.show()
             binding.backButton.show()
             binding.restaurantDetailFloatingActionButton.show()
-
         }
     }
-
-
-
 }

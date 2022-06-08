@@ -1,21 +1,16 @@
 package com.example.foodorderingapplication.ui.login
 
-import android.animation.Animator
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.databinding.FragmentSignupBinding
 import com.example.foodorderingapplication.ui.main.MainActivity
 import com.example.foodorderingapplication.utils.Resource
-import com.example.foodorderingapplication.utils.Resource.Companion.loading
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,7 +21,7 @@ class SignupFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -49,20 +44,15 @@ class SignupFragment : Fragment() {
             binding.registerButton.visibility = View.GONE
 
             viewModel.register(name, email, password)
-                .observe(viewLifecycleOwner, Observer {
+                .observe(viewLifecycleOwner) {
                     when (it.status) {
-                        Resource.Status.LOADING -> {
-                            //_binding.progressBar.show()
-                        }
+                        Resource.Status.LOADING -> {}
                         Resource.Status.SUCCESS -> {
-                            //_binding.progressBar.gone()
                             val intent = Intent(context, MainActivity::class.java)
                             startActivity(intent)
                             requireActivity().finish()
-
                         }
                         Resource.Status.ERROR -> {
-                            //_binding.progressBar.gone()
                             binding.registerNameTextView.editText?.text?.clear()
                             binding.registerEmailTextView.editText?.text?.clear()
                             binding.registerPasswordTextView.editText?.text?.clear()
@@ -75,8 +65,7 @@ class SignupFragment : Fragment() {
                             dialog.show()
                         }
                     }
-                })
+                }
         }
     }
-
 }

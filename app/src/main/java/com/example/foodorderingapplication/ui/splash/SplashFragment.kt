@@ -14,23 +14,22 @@ import com.example.foodorderingapplication.databinding.FragmentSplashBinding
 import com.example.foodorderingapplication.model.local.SharedPrefManager
 import com.example.foodorderingapplication.ui.main.MainActivity
 
-class SplashFragment : Fragment(){
-    private  lateinit var binding: FragmentSplashBinding
+class SplashFragment : Fragment() {
+    private lateinit var binding: FragmentSplashBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         init()
         return binding.root
     }
 
     private fun init() {
-        binding.splashAnimation.addAnimatorListener(object : Animator.AnimatorListener{
-            override fun onAnimationStart(animation: Animator?) {
-            }
+        binding.splashAnimation.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {}
 
             override fun onAnimationEnd(animation: Animator?) {
                 val token = getToken()
@@ -50,23 +49,19 @@ class SplashFragment : Fragment(){
                             val intent = Intent(context, MainActivity::class.java)
                             startActivity(intent)
                             requireActivity().finish()
-
                         }
                     }
                 }
-
             }
 
             override fun onAnimationCancel(animation: Animator?) {
                 findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
             }
 
-            override fun onAnimationRepeat(animation: Animator?) {
-
-            }
-
+            override fun onAnimationRepeat(animation: Animator?) {}
         })
     }
+
     private fun getToken(): String? {
         return SharedPrefManager(requireContext()).getToken()
     }

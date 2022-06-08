@@ -10,16 +10,17 @@ import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.model.entity.Ingredient
 
 
-class IngredientRecyclerViewAdapter(private val ingredientList : MutableList<Ingredient>)
-    : RecyclerView.Adapter<IngredientRecyclerViewAdapter.ModelViewHolder>(){
+class IngredientRecyclerViewAdapter(private val ingredientList: MutableList<Ingredient>) :
+    RecyclerView.Adapter<IngredientRecyclerViewAdapter.ModelViewHolder>() {
 
     private var ingredientClickListener: IngredientRecyclerViewAdapterListener? = null
 
-    class ModelViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+    class ModelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val ingredientLayout: CardView = view.findViewById(R.id.ingredientLayout)
         private val ingredientName: TextView = view.findViewById(R.id.ingredientNameTextView)
 
-        fun bindItems(ingredient: Ingredient, position: Int, listener: IngredientRecyclerViewAdapterListener?
+        fun bindItems(
+            ingredient: Ingredient, position: Int, listener: IngredientRecyclerViewAdapterListener?
         ) {
             ingredientName.text = ingredient.ingredient
             ingredientLayout.setOnClickListener {
@@ -43,6 +44,4 @@ class IngredientRecyclerViewAdapter(private val ingredientList : MutableList<Ing
     fun addListener(listener: IngredientRecyclerViewAdapterListener) {
         ingredientClickListener = listener
     }
-
-
 }

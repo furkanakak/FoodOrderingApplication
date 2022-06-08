@@ -26,5 +26,4 @@ class MealAddViewModel @Inject constructor(
         val request = MealAddRequest(name, imageUrl, price, ingredients)
         return apiRepository.postMeal(restaurantId, request)
     }
-
 }

@@ -12,7 +12,8 @@ import com.example.foodorderingapplication.R
 import com.example.foodorderingapplication.model.entity.order.Order
 import java.text.SimpleDateFormat
 
-class OrderRecyclerViewAdapter : RecyclerView.Adapter<OrderRecyclerViewAdapter.OrderListViewHolder>() {
+class OrderRecyclerViewAdapter :
+    RecyclerView.Adapter<OrderRecyclerViewAdapter.OrderListViewHolder>() {
     var myOrderList = ArrayList<Order>()
 
     class OrderListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -47,6 +48,7 @@ class OrderRecyclerViewAdapter : RecyclerView.Adapter<OrderRecyclerViewAdapter.O
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setOrderList(list: ArrayList<Order>) {
         this.myOrderList = list
         notifyDataSetChanged()

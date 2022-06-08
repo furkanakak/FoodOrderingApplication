@@ -7,5 +7,4 @@ data class OrderAddRequest(
     val restaurantId: String,
     @SerializedName("mealId")
     val mealId: String,
-
-    )
+)

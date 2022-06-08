@@ -1,5 +1,6 @@
 package com.example.foodorderingapplication.ui.meal
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,8 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.MealsListViewHold
     class MealsListViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         private val mealImageView: ImageView = view.findViewById(R.id.mealImageView)
         private val mealTitleTextView: TextView = view.findViewById(R.id.mealTitleTextView)
-        private val mealDescriptionTextView: TextView = view.findViewById(R.id.mealDescriptionTextView)
+        private val mealDescriptionTextView: TextView =
+            view.findViewById(R.id.mealDescriptionTextView)
         private val mealPriceTextView: TextView = view.findViewById(R.id.mealPriceTextView)
         private val mealCardView: CardView = view.findViewById(R.id.mealCardView)
 
@@ -37,6 +39,8 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.MealsListViewHold
 
         }
     }
+
+    @SuppressLint("NotifyDataSetChanged")
     fun setMealList(mealList: ArrayList<Meal>) {
         this.mealList = mealList
         print(this.mealList)
@@ -61,7 +65,4 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.MealsListViewHold
     }
 
     override fun getItemCount(): Int = mealList.size
-
-
-
 }

@@ -31,6 +31,4 @@ interface APIService {
 
     @POST("auth/register")
     suspend fun register(@Body request: RegisterRequest): Response<RegisterResponse>
-
-
 }

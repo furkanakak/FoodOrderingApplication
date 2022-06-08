@@ -4,16 +4,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ViewPagerAdapter(fragment : FragmentActivity) : FragmentStateAdapter(fragment){
+class ViewPagerAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-        return when (position)
-        {
+        return when (position) {
             0 -> FirstOnBoardingFragment()
             1 -> SecondOnBoardingFragment()
             else -> ThirdOnBoardingFragment()
         }
     }
-
 }

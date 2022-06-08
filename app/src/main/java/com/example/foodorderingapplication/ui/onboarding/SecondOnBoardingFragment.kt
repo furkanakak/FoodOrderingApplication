@@ -16,7 +16,7 @@ class SecondOnBoardingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSecondOnboardingBinding.inflate(inflater,container,false)
+        binding = FragmentSecondOnboardingBinding.inflate(inflater, container, false)
         return binding?.root
     }
 

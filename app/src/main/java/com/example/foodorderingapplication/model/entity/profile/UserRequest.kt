@@ -2,7 +2,7 @@ package com.example.foodorderingapplication.model.entity.profile
 
 import com.google.gson.annotations.SerializedName
 
-data class UserRequest (
+data class UserRequest(
     @SerializedName("email")
     val email: String,
     @SerializedName("name")

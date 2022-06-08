@@ -1,5 +1,6 @@
 package com.example.foodorderingapplication.ui.meal
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapplication.R
 
-class MealIngredientsAdapter  : RecyclerView.Adapter<MealIngredientsAdapter.MealIngredientsViewHolder>() {
+class MealIngredientsAdapter :
+    RecyclerView.Adapter<MealIngredientsAdapter.MealIngredientsViewHolder>() {
 
     private var ingredients = ArrayList<String>()
 
@@ -19,6 +21,8 @@ class MealIngredientsAdapter  : RecyclerView.Adapter<MealIngredientsAdapter.Meal
         }
 
     }
+
+    @SuppressLint("NotifyDataSetChanged")
     fun setIngredients(ingredientList: ArrayList<String>) {
         this.ingredients = ingredientList
         notifyDataSetChanged()
